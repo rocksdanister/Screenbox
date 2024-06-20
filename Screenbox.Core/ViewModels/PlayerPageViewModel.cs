@@ -12,6 +12,8 @@ using Screenbox.Core.Messages;
 using Screenbox.Core.Models;
 using Screenbox.Core.Playback;
 using Screenbox.Core.Services;
+using Screenbox.Core.Shaders.Models;
+using Screenbox.Core.Shaders.Runners;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -96,7 +98,13 @@ namespace Screenbox.Core.ViewModels
 
             // Activate the view model's messenger
             IsActive = true;
+
+            var tunnelProperties = new TunnelModel() { IsSquare = true, Speed = 0.1f, Brightness = 1f };
+            SelectedShader = new ShaderRunnerViewModel(new TunnelRunner(() => tunnelProperties), tunnelProperties, ShaderTypes.tunnel, scaleFactor: 1f, maxScaleFactor: 1f);
         }
+
+        [ObservableProperty]
+        private ShaderRunnerViewModel selectedShader;
 
         public void Receive(TogglePlayerVisibilityMessage message)
         {

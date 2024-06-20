@@ -161,6 +161,9 @@
     <Compile Include="Controls\CommonGridViewItem.xaml.cs">
       <DependentUpon>CommonGridViewItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ComputeSharpVisualizerPlayer.xaml.cs">
+      <DependentUpon>ComputeSharpVisualizerPlayer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CustomNavigationView.cs" />
     <Compile Include="Controls\CustomSlider.cs" />
     <Compile Include="Controls\Extensions\ApplicationViewExtensions.cs" />
@@ -308,6 +311,7 @@
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
+    <Content Include="Assets\Default-texture-bg.jpg" />
     <Content Include="Assets\Icons\Audio\FileAssociationAAC.targetsize-128.png" />
     <Content Include="Assets\Icons\Audio\FileAssociationAAC.targetsize-129.png" />
     <Content Include="Assets\Icons\Audio\FileAssociationAAC.targetsize-16.png" />
@@ -897,6 +901,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\ComputeSharpVisualizerPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\MediaListViewItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1096,6 +1104,9 @@
     </PackageReference>
     <PackageReference Include="LibVLC.UWP">
       <Version>3.0.20-2405070635</Version>
+    </PackageReference>
+    <PackageReference Include="SixLabors.ImageSharp">
+      <Version>2.1.8</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

@@ -317,6 +317,13 @@
             </Border>
         </Grid>
 
+        <controls:ComputeSharpVisualizerPlayer
+            x:Name="ComputeSharpPlayer"
+            Grid.RowSpan="3"
+            Grid.ColumnSpan="2"
+            Media="{x:Bind ViewModel.Media, Mode=OneWay}"
+            Shader="{x:Bind ViewModel.SelectedShader, Mode=OneWay}" />
+
         <controls:PlayerElement
             x:Name="VideoView"
             Grid.Row="0"
@@ -561,8 +568,8 @@
                         <Setter Target="LayoutRoot.RequestedTheme" Value="{x:Bind ViewModel.ActualTheme, Mode=OneWay}" />
                         <Setter Target="AlbumArtPanel.Visibility" Value="Visible" />
                         <Setter Target="BackgroundElement.Visibility" Value="Visible" />
-                        <Setter Target="HeaderBackground.Opacity" Value="0" />
-                        <Setter Target="PlayerControlsBackground.Opacity" Value="0" />
+                        <Setter Target="HeaderBackground.Opacity" Value="1" />
+                        <Setter Target="PlayerControlsBackground.Opacity" Value="1" />
                         <Setter Target="VideoView.Opacity" Value="0" />
                     </VisualState.Setters>
                     <Storyboard x:Name="BackgroundArtAnimation">
@@ -670,9 +677,14 @@
             </VisualStateGroup>
 
             <VisualStateGroup x:Name="LayoutGroup" CurrentStateChanged="OnLayoutVisualStateChanged">
-                <VisualState x:Name="Normal" />
+                <VisualState x:Name="Normal">
+                    <VisualState.Setters>
+                        <Setter Target="AlbumArtPanel.Opacity" Value="0" />
+                    </VisualState.Setters>
+                </VisualState>
                 <VisualState x:Name="Fullscreen">
                     <VisualState.Setters>
+                        <Setter Target="AlbumArtPanel.Opacity" Value="0" />
                         <Setter Target="HeaderBackground.Height" Value="NaN" />
                         <Setter Target="BackButton.Visibility" Value="Collapsed" />
                         <Setter Target="PlayQueueButton.Margin" Value="20,20,6,20" />
@@ -715,6 +727,7 @@
                 </VisualState>
                 <VisualState x:Name="MiniPlayer">
                     <VisualState.Setters>
+                        <Setter Target="ComputeSharpPlayer.Visibility" Value="Collapsed" />
                         <Setter Target="LayoutRoot.Background" Value="{ThemeResource AcrylicInAppFillColorDefaultBrush}" />
                         <Setter Target="LayoutRoot.BorderBrush" Value="{ThemeResource ControlElevationBorderBrush}" />
                         <Setter Target="LayoutRoot.BorderThickness" Value="1" />
